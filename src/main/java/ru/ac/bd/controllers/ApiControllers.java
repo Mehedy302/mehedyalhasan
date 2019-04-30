@@ -21,12 +21,36 @@ public class ApiControllers {
 	@Autowired
 	private ApiModelsRepository repository;
 	
+	@RequestMapping(value = "/getstudents", method = RequestMethod.GET)
+	  public List<ApiModels> getAllPets() {
+	    return repository.findAll();
+	  }
+
+	  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	  public ApiModels getPetById(@PathVariable("id") ObjectId id) {
+	    return repository.findBy_id(id);
+	  }
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/setstudent", method = RequestMethod.POST)
 	  public ApiModels createPet(@Valid @RequestBody ApiModels student) {
 		student.set_id(ObjectId.get());
 	    repository.save(student);
 	    return student;
 	  }
+	
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	  public void modifyPetById(@PathVariable("id") ObjectId id, @Valid @RequestBody ApiModels student) {
+		student.set_id(id);
+	    repository.save(student);
+	  }
+	
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	  public void deletePet(@PathVariable ObjectId id) {
+	    repository.delete(repository.findBy_id(id));
+	  }
+	
 
 }
