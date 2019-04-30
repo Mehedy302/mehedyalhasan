@@ -38,48 +38,33 @@ collect student using id
 }
 
 
-### Create a New Question [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+## Creating a new student[/setstudent]
+### Create a New student [POST]
 
-+ Request (application/json)
+ + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+        {   "name":"Anichur",
+            "id":"1610476125",
+            "dept":"cse"
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /setstudent
 
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+           {
+                 "_id": "5cc885acb754d900040b0377",
+                "name": "Anichur",
+                "id": "1610476125",
+                "dept": "cse"
+        }
+
+
+
+## Updating a  student[/5cc885acb754d900040b0377]
+### update  a  student [PUT]
